@@ -12,6 +12,25 @@ export interface PatientResponse {
     id: number;
   };
 }
+// Si ya tienes estos tipos, usa los tuyos
+export interface Patient {
+  id: number;
+  nombres: string;
+  apellidos: string;
+  sexo?: string;
+  fechaNacimiento?: string;
+  tipoIdentificacion?: string;
+  numeroIdentificacion?: string;
+  email?: string;
+  celular?: string;
+  ciudad?: string;
+};
+
+export interface PatientListResponse {
+  patients: Patient[];
+  count?: number;
+  searchTerm?: string;
+};
 
 // Exportamos el objeto ApiService
 export const ApiService = {
@@ -63,6 +82,50 @@ export const ApiService = {
       return { success: false, error: errorMessage };
     }
   },
+
+  // en ApiService.ts
+
+
+
+buscarPacientes: async (patientData: string): Promise<ApiResponse<PatientListResponse>> => {
+  try {
+    const term = encodeURIComponent(patientData ?? "");
+    const response = await fetch(`${ApiService.baseURL}/patients/search/${term}`, {
+      method: "GET",
+      headers: ApiService.getHeaders(),
+    });
+
+    const json = await response.json();
+    if (!response.ok) {
+      throw new Error(json.error || `HTTP ${response.status}: ${JSON.stringify(json)}`);
+    }
+
+    // Normalizamos distintas formas posibles del payload
+    const payload = json?.data ?? json;
+
+    let patients: Patient[] = [];
+    if (Array.isArray(payload?.patients)) {
+      patients = payload.patients;
+    } else if (payload?.patient) {
+      // por si el backend alguna vez envía "patient" (singular)
+      patients = Array.isArray(payload.patient) ? payload.patient : [payload.patient];
+    } else if (Array.isArray(payload)) {
+      patients = payload;
+    }
+
+    return {
+      success: true,
+      data: {
+        patients,
+        count: payload?.count ?? patients.length,
+        searchTerm: payload?.searchTerm ?? patientData,
+      },
+    };
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Error buscando pacientes";
+    return { success: false, error: errorMessage };
+  }
+},
 
   createMedicalRecord: async (medicalData: any): Promise<ApiResponse> => {
     try {
