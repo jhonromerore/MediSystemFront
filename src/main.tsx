@@ -14,6 +14,7 @@ import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { Toaster } from 'sonner';
+import PatientsListPage from './pages/PatientsListPage';
 // Define las rutas de tu aplicación
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
         element: <DashboardPage />,
       },
       // En el futuro, podrías añadir más rutas protegidas aquí. Por ejemplo:
-      // { path: "pacientes", element: <PatientsListPage /> },
+      { path: "pacientes", element: <PatientsListPage /> },
     ]
   },
 ]);

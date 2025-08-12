@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Brain, Search, Tag } from 'lucide-react';
-import { FormField, InputField, Alert } from '../ui';
-
+import { FormField, Alert } from '../ui';
+import InputField from '../ui/InputField';
 // --- Tipos de Datos ---
 export interface DiagnosticoData {
   principal: string;

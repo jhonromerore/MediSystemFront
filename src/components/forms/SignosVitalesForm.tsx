@@ -2,8 +2,8 @@
 
 import React, { useEffect } from 'react';
 import { Activity, Save, Thermometer, Heart, Droplets, Gauge, Weight, Ruler, Calculator } from 'lucide-react';
-import { InputField, Button, Alert } from '../ui';
-
+import { Button, Alert } from '../ui';
+import InputField from '../ui/InputField';
 // --- Tipos de Datos ---
 export interface SignosVitalesData {
   temperatura: string; presionSistolica: string; presionDiastolica: string;

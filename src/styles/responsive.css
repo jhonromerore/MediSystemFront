@@ -1,0 +1,313 @@
+/* Archivo: src/styles/responsive.css - Estilos de responsividad mejorados */
+
+/* =================================================================
+ * LAYOUT RESPONSIVO MEJORADO
+ * ================================================================= */
+
+/* Contenedor principal responsivo */
+.responsive-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12;
+}
+
+/* Contenedor con ancho mínimo fijo para consistencia */
+.responsive-fixed-width {
+  @apply w-full min-w-[1200px] max-w-7xl mx-auto;
+}
+
+/* Contenedor de contenido principal con ancho fijo */
+.responsive-main-content {
+  @apply w-full min-w-[1200px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Grid responsivo para formularios */
+.responsive-form-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+}
+
+/* Grid responsivo para tarjetas */
+.responsive-card-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6;
+}
+
+/* Layout de dos columnas responsivo */
+.responsive-two-column {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8;
+}
+
+/* Layout de tres columnas responsivo */
+.responsive-three-column {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* =================================================================
+ * TABLAS RESPONSIVAS
+ * ================================================================= */
+
+/* Tabla responsiva con scroll horizontal */
+.responsive-table-container {
+  @apply overflow-x-auto bg-white rounded-xl border border-slate-200;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(203 213 225) transparent;
+}
+
+.responsive-table-container::-webkit-scrollbar {
+  @apply h-2;
+}
+
+.responsive-table-container::-webkit-scrollbar-track {
+  @apply bg-slate-100 rounded-full;
+}
+
+.responsive-table-container::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+.responsive-table-container::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
+
+/* Tabla responsiva con columnas que se ocultan */
+.responsive-table {
+  @apply w-full min-w-[800px];
+}
+
+/* =================================================================
+ * FORMULARIOS RESPONSIVOS
+ * ================================================================= */
+
+/* Campo de formulario responsivo */
+.responsive-form-field {
+  @apply w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base;
+}
+
+/* Botón responsivo */
+.responsive-button {
+  @apply px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base;
+}
+
+/* Botón de ancho completo en móviles */
+.responsive-button-full {
+  @apply w-full sm:w-auto;
+}
+
+/* =================================================================
+ * NAVEGACIÓN RESPONSIVA
+ * ================================================================= */
+
+/* Navegación por tabs responsiva */
+.responsive-tabs {
+  @apply flex flex-wrap gap-2 overflow-x-auto pb-2;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.responsive-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab responsivo */
+.responsive-tab {
+  @apply flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap flex-shrink-0;
+}
+
+/* =================================================================
+ * ESPACIADO RESPONSIVO
+ * ================================================================= */
+
+/* Padding responsivo */
+.responsive-padding {
+  @apply p-4 sm:p-6 lg:p-8;
+}
+
+.responsive-padding-x {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.responsive-padding-y {
+  @apply py-4 sm:py-6 lg:py-8;
+}
+
+/* Contenido principal consistente entre componentes */
+.responsive-content {
+  @apply px-4 sm:px-6 lg:px-8 py-6;
+}
+
+/* Contenido interno con ancho mínimo fijo */
+.responsive-inner-content {
+  @apply w-full min-w-[1200px] px-4 sm:px-6 lg:px-8 py-6;
+}
+
+/* Margin responsivo */
+.responsive-margin {
+  @apply m-4 sm:m-6 lg:m-8;
+}
+
+.responsive-margin-x {
+  @apply mx-4 sm:mx-6 lg:mx-8;
+}
+
+.responsive-margin-y {
+  @apply my-4 sm:my-6 lg:my-8;
+}
+
+/* =================================================================
+ * TIPOGRAFÍA RESPONSIVA
+ * ================================================================= */
+
+/* Títulos responsivos */
+.responsive-heading-1 {
+  @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl;
+}
+
+.responsive-heading-2 {
+  @apply text-xl sm:text-2xl lg:text-3xl xl:text-4xl;
+}
+
+.responsive-heading-3 {
+  @apply text-lg sm:text-xl lg:text-2xl xl:text-3xl;
+}
+
+.responsive-heading-4 {
+  @apply text-base sm:text-lg lg:text-xl xl:text-2xl;
+}
+
+/* Texto responsivo */
+.responsive-text {
+  @apply text-sm sm:text-base lg:text-lg;
+}
+
+.responsive-text-small {
+  @apply text-xs sm:text-sm;
+}
+
+/* =================================================================
+ * UTILIDADES RESPONSIVAS
+ * ================================================================= */
+
+/* Ocultar elementos en diferentes breakpoints */
+.hidden-xs { @apply hidden; }
+.hidden-sm { @apply hidden sm:block; }
+.hidden-md { @apply hidden md:block; }
+.hidden-lg { @apply hidden lg:block; }
+.hidden-xl { @apply hidden xl:block; }
+
+/* Mostrar elementos solo en breakpoints específicos */
+.visible-xs { @apply block sm:hidden; }
+.visible-sm { @apply hidden sm:block md:hidden; }
+.visible-md { @apply hidden md:block lg:hidden; }
+.visible-lg { @apply hidden lg:block xl:hidden; }
+.visible-xl { @apply hidden xl:block; }
+
+/* =================================================================
+ * ANIMACIONES RESPONSIVAS
+ * ================================================================= */
+
+/* Animaciones que se desactivan en dispositivos que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .responsive-animation {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =================================================================
+ * MEDIA QUERIES PERSONALIZADAS
+ * ================================================================= */
+
+/* Extra pequeño (móviles pequeños) */
+@media (max-width: 475px) {
+  .responsive-container {
+    @apply px-3;
+  }
+  
+  .responsive-fixed-width,
+  .responsive-main-content,
+  .responsive-inner-content {
+    @apply min-w-[1200px] px-3;
+  }
+  
+  .responsive-padding {
+    @apply p-3;
+  }
+  
+  .responsive-button {
+    @apply px-3 py-2 text-xs;
+  }
+}
+
+/* Pequeño (móviles) */
+@media (max-width: 640px) {
+  .responsive-fixed-width,
+  .responsive-main-content,
+  .responsive-inner-content {
+    @apply min-w-[1200px];
+  }
+  
+  .responsive-form-grid {
+    @apply grid-cols-1;
+  }
+  
+  .responsive-card-grid {
+    @apply grid-cols-1;
+  }
+}
+
+/* Mediano (tablets) */
+@media (max-width: 768px) {
+  .responsive-fixed-width,
+  .responsive-main-content,
+  .responsive-inner-content {
+    @apply min-w-[1200px];
+  }
+  
+  .responsive-form-grid {
+    @apply grid-cols-1 sm:grid-cols-2;
+  }
+  
+  .responsive-card-grid {
+    @apply grid-cols-1 sm:grid-cols-2;
+  }
+}
+
+/* Grande (desktops pequeños) */
+@media (max-width: 1024px) {
+  .responsive-fixed-width,
+  .responsive-main-content,
+  .responsive-inner-content {
+    @apply min-w-[1200px];
+  }
+  
+  .responsive-three-column {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+}
+
+/* Extra grande (desktops grandes) */
+@media (min-width: 1280px) {
+  .responsive-container {
+    @apply px-12;
+  }
+  
+  .responsive-fixed-width,
+  .responsive-main-content,
+  .responsive-inner-content {
+    @apply min-w-[1200px] px-12;
+  }
+  
+  .responsive-form-grid {
+    @apply grid-cols-4;
+  }
+}
+
+/* 2XL (pantallas muy grandes) */
+@media (min-width: 1536px) {
+  .responsive-container {
+    @apply px-16;
+  }
+  
+  .responsive-fixed-width,
+  .responsive-main-content,
+  .responsive-inner-content {
+    @apply min-w-[1200px] px-16;
+  }
+}

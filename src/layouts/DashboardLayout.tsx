@@ -3,16 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, Outlet, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Stethoscope, 
-  Users, 
-  Calendar, 
-  FileText, 
-  Settings, 
-  Bell, 
-  Search, 
-  Menu, 
-  X, 
+import {
+  Stethoscope,
+  Users,
+  Calendar,
+  FileText,
+  Settings,
+  Bell,
+  Search,
+  Menu,
+  X,
   User,
   LogOut,
   Activity,
@@ -91,7 +91,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             exit={{ opacity: 0 }}
             onClick={onClose}
           />
-          
+
           {/* Sidebar */}
           <motion.aside
             className="fixed left-0 top-0 h-full w-80 bg-white border-r border-slate-200 z-50 lg:relative lg:z-0"
@@ -121,7 +121,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                     <X className="w-5 h-5 text-slate-500" />
                   </button>
                 </div>
-                
+
                 {/* Botón de acción rápida */}
                 <motion.button
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/25 hover:from-blue-700 hover:to-indigo-700 transition-all"
@@ -149,32 +149,29 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                               key={item.id}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
-                              transition={{ 
+                              transition={{
                                 delay: (sectionIndex * 0.1) + (itemIndex * 0.05),
-                                duration: 0.3 
+                                duration: 0.3
                               }}
                             >
                               <Link
                                 to={item.href}
-                                className={`group flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                                  isActive
-                                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25'
-                                    : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
-                                }`}
+                                className={`group flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${isActive
+                                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25'
+                                  : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                                  }`}
                                 onClick={() => {
                                   if (window.innerWidth < 1024) onClose();
                                 }}
                               >
-                                <item.icon className={`w-5 h-5 transition-colors ${
-                                  isActive ? 'text-white' : 'text-slate-400 group-hover:text-blue-600'
-                                }`} />
+                                <item.icon className={`w-5 h-5 transition-colors ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-blue-600'
+                                  }`} />
                                 <span className="flex-1">{item.label}</span>
                                 {item.badge && (
-                                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                                    isActive
-                                      ? 'bg-white/20 text-white'
-                                      : 'bg-blue-100 text-blue-600'
-                                  }`}>
+                                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${isActive
+                                    ? 'bg-white/20 text-white'
+                                    : 'bg-blue-100 text-blue-600'
+                                    }`}>
                                     {item.badge}
                                   </span>
                                 )}
@@ -239,17 +236,17 @@ const Header: React.FC<{ onMenuClick: () => void }> = ({ onMenuClick }) => {
           >
             <Menu className="w-6 h-6 text-slate-600" />
           </button>
-          
+
           <div className="hidden lg:block">
             <h1 className="text-2xl font-bold text-slate-800">
               Bienvenido, {user.name.split(' ')[1]}
             </h1>
             <p className="text-sm text-slate-500">
-              {new Date().toLocaleDateString('es-ES', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+              {new Date().toLocaleDateString('es-ES', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
               })}
             </p>
           </div>
@@ -319,16 +316,14 @@ const Header: React.FC<{ onMenuClick: () => void }> = ({ onMenuClick }) => {
                     {notifications.map((notification) => (
                       <div key={notification.id} className="p-4 border-b border-slate-100 hover:bg-slate-50 transition-colors">
                         <div className="flex items-start gap-3">
-                          <div className={`p-1 rounded-full ${
-                            notification.type === 'info' ? 'bg-blue-100' :
+                          <div className={`p-1 rounded-full ${notification.type === 'info' ? 'bg-blue-100' :
                             notification.type === 'warning' ? 'bg-amber-100' :
-                            'bg-emerald-100'
-                          }`}>
-                            <div className={`w-2 h-2 rounded-full ${
-                              notification.type === 'info' ? 'bg-blue-500' :
+                              'bg-emerald-100'
+                            }`}>
+                            <div className={`w-2 h-2 rounded-full ${notification.type === 'info' ? 'bg-blue-500' :
                               notification.type === 'warning' ? 'bg-amber-500' :
-                              'bg-emerald-500'
-                            }`} />
+                                'bg-emerald-500'
+                              }`} />
                           </div>
                           <div className="flex-1">
                             <p className="text-sm font-medium text-slate-800">{notification.title}</p>
@@ -412,7 +407,7 @@ const Header: React.FC<{ onMenuClick: () => void }> = ({ onMenuClick }) => {
 export function DashboardLayout() {
   const { isAuthenticated } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const location = useLocation();
   // Cerrar sidebar al cambiar el tamaño de ventana
   useEffect(() => {
     const handleResize = () => {
@@ -441,19 +436,15 @@ export function DashboardLayout() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+  if (!isAuthenticated) return <Navigate to="/login" />;
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
-      {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         <Header onMenuClick={() => setSidebarOpen(true)} />
-        
+
         <main className="flex-1 overflow-auto">
           <motion.div
             key={location.pathname}
@@ -463,7 +454,10 @@ export function DashboardLayout() {
             transition={{ duration: 0.3 }}
             className="h-full"
           >
-            <Outlet />
+            {/* ÚNICO contenedor para TODAS las páginas */}
+            <div className="mx-auto w-full max-w-7xl px-4 lg:px-6 py-6">
+              <Outlet />
+            </div>
           </motion.div>
         </main>
       </div>

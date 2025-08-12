@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Stethoscope, LogIn } from "lucide-react";
-import { InputField, Button, Alert, CheckboxField } from "./ui";
+import {  Button, Alert } from "./ui";
+import InputField from "./ui/InputField";
+import CheckboxField from "./ui/CheckboxField";
 
 export function LoginForm() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -84,9 +86,7 @@ export function LoginForm() {
           {/* Error Alert */}
           {showError && error && (
             <Alert 
-              type="error" 
-              dismissible={true}
-              onDismiss={handleDismissError}
+              type="error"
             >
               {error}
             </Alert>
@@ -139,7 +139,6 @@ export function LoginForm() {
                 disabled={isLoading}
                 loading={isLoading}
                 icon={LogIn}
-                size="lg"
                 className="w-full"
               >
                 Iniciar Sesión
